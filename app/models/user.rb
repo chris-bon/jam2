@@ -12,8 +12,8 @@ class User < ActiveRecord::Base
   validate :password_complexity
 
   devise :database_authenticatable, :registerable, :recoverable, :rememberable,
-         :trackable, :validatable, :lockable, :timeoutable
-         #:confirmable, :omniauthable
+         :trackable, :validatable
+         # :confirmable, :lockable, :timeoutable, :omniauthable
 
   def self.find_for_database_authentication warden_conditions
     conditions = warden_conditions.dup

@@ -2,10 +2,11 @@ Rails.application.routes.draw do
   root 'application#index'
   devise_for :users, controllers: { registrations: 'users/registrations' }
   resources :profiles
-  get '/profiles/:id/settings' => 'profiles#settings'
+  get '/profiles/:id/settings' => 'profiles#settings', as: 'settings' 
 end
 
-=begin      
+=begin
+
     new_user_session  GET     /users/sign_in   devise/sessions#new
         user_session  POST    /users/sign_in   devise/sessions#create
 destroy_user_session  DELETE  /users/sign_out  devise/sessions#destroy
@@ -22,11 +23,13 @@ cancel_user_registration  GET     /users/cancel   devise/registrations#cancel
                           PATCH   /users          devise/registrations#update
                           DELETE  /users          devise/registrations#destroy
 
-     profiles  GET     /profiles           profiles#index
-     profile   GET     /profiles/:id       profiles#show
-               POST    /profiles           profiles#create
- new_profile   GET     /profiles/new       profiles#new
-edit_profile   GET     /profiles/:id/edit  profiles#edit
-               PATCH   /profiles/:id       profiles#update
-               DELETE  /profiles/:id       profiles#destroy
+     profiles  GET     /profiles               profiles#index
+     profile   GET     /profiles/:id           profiles#show
+     settings  GET     /profiles/:id/settings  profiles#settings
+               POST    /profiles               profiles#create
+ new_profile   GET     /profiles/new           profiles#new
+edit_profile   GET     /profiles/:id/edit      profiles#edit
+               PATCH   /profiles/:id           profiles#update
+               DELETE  /profiles/:id           profiles#destroy
+
 =end
